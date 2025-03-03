@@ -12,11 +12,22 @@ document.getElementById("addTaskBtn").addEventListener("click", function () {
 
     //Clear the input field after adding the task
     document.getElementById("taskInput").value = "";
-
     //Call the function to update the task list display
     displayTasks();
   }
   console.log(tasks);
+});
+
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    let taskInput = document.getElementById("taskInput").value;
+    if (taskInput) {
+      tasks.push(taskInput);
+      document.getElementById("taskInput").value = "";
+      displayTasks();
+    }
+    console.log(tasks);
+  }
 });
 
 //A function to display tasks in the list
@@ -36,10 +47,12 @@ function displayTasks() {
       "list-group-item",
       "d-flex",
       "justify-content-between",
-      "align-items-center"
+      "align-items-center",
+      "border",
+      "border-dark"
     );
 
-    li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'> √ </button>`;
+    li.innerHTML = `${task} <button class='btn btn-success btn-sm' onclick='removeTask(${index})'> √ </button>`;
 
     //Append the new task to the task list
     taskList.appendChild(li);
