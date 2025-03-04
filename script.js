@@ -30,6 +30,10 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+function taskCounter() {
+  document.getElementById("taskCounter").innerText = `Task Counter: ${tasks.length}`;
+} 
+
 //A function to display tasks in the list
 function displayTasks() {
   //Select the unordered list (taskList) in the HTML
@@ -57,6 +61,8 @@ function displayTasks() {
     //Append the new task to the task list
     taskList.appendChild(li);
   });
+
+  taskCounter();
 }
 
 //Function to remove a task fromt the list when the "√" button is clicked
